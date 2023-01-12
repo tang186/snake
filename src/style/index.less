@@ -1,0 +1,117 @@
+//设置变量
+@bg-color: #b7d4a8;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#main{
+  // position: absolute;
+  width: 360px;
+  height: 420px;
+  background-color: @bg-color;
+  border: 10px solid black;
+  border-radius: 20px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  #stage {
+    width: 304px;
+    height: 304px;
+    border: 2px solid black;
+    position: relative;
+    #snake {
+      div {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #000;
+        border: 1px solid @bg-color;
+        top: 0px;
+        left: 0px;
+        transition: all 1 ease;
+      }
+      
+    }
+    #food {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-content: space-between;
+      left: 40px;
+      top: 100px;
+      animation: big 1s infinite;
+
+      div {
+        width: 2px;
+        height: 2px;
+        background-color: #000;
+        transform: rotate(45deg);
+        animation:small 1s infinite;
+      }
+
+      @keyframes small {
+        0% {
+          width: 2px;
+          height: 2px;
+        }
+
+        50% {
+          width: 4px;
+          height: 4px;
+        }
+
+        100% {
+          width: 2px;
+          height: 2px;
+        }
+      }
+
+      @keyframes big {
+        0% {
+          width: 5px;
+          height: 5px;
+        }
+
+        50% {
+          width: 10px;
+          height: 10px;
+        }
+
+        100% {
+          width: 5px;
+          height: 5px;
+        }
+      }
+    }
+    
+  }
+  #foot {
+    display: flex;
+    width: 304px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    font-weight: 700;
+    #newGame{
+      width: 72px;
+      background-color: @bg-color;
+    }
+    #newGame:hover{
+      box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.2);
+    }
+
+    .speed{
+      width: 20px;
+      background-color: @bg-color;
+      height: 20px;
+      margin: 0 3px;
+    }
+  }
+}
