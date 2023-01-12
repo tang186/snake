@@ -17,6 +17,7 @@ class Snake {
     return this.head.offsetTop;
   }
 
+  // 改变蛇头位置
   set X(value: number) {
     if (this.X === value) {
         return;
@@ -25,18 +26,10 @@ class Snake {
         throw new Error("撞墙了！Game Over!");
     }
 
-    // 禁止蛇掉头
-    // if (this.bodies[1] && (this.bodies[1] as HTMLElement).offsetLeft == value) {
-    //     if (this.X > value) { // 正向右边走向左掉头
-    //         value = this.X + 10;
-    //     } else {
-    //         value = this.X - 10;
-
-    //     }
-    // }
-
+    // 移动蛇身体
     this.moveBody();
     this.head.style.left = value + "px";
+    // 检查是否撞到自己身体
     this.checkHeadBody();
   }
 
@@ -61,8 +54,10 @@ class Snake {
     this.checkHeadBody();
   }
 
+  // 增加身体长度
   addEle() {
     this.element.insertAdjacentHTML("beforeend", "<div></div>");
+    // 因为刚出来的身体会显示到活动区域的由上级所以先隐藏
     (this.bodies[this.bodies.length - 1] as HTMLElement).style.display = "none"
   }
 
@@ -77,6 +72,7 @@ class Snake {
   }
 
   checkHeadBody() {
+    // 检查是否撞到身体
     for (let i = 2; i < this.bodies.length; i++) {
       let b = this.bodies[i] as HTMLElement;
       if (b.offsetLeft == this.X && b.offsetTop == this.Y) {

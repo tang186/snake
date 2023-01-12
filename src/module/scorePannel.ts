@@ -18,7 +18,7 @@ class scorePannel {
     let s = Number(this.score.innerHTML) + Number(this.level.innerHTML)
     this.score.innerHTML = String(s)
     this.num++
-    // 如果分数规定的分数就加一个等级
+    // 如果达到规定个数就加一个等级
     if (this.scoreFlag == this.num) {
       this.levelAdd()
       this.num = 0;
